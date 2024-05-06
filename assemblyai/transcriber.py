@@ -1178,9 +1178,9 @@ class _RealtimeTranscriberImpl:
             self._write_queue.put({"terminate_session": True})
 
         try:
+            self._websocket.close()
             self._read_thread.join()
             self._write_thread.join()
-            self._websocket.close()
         except Exception:
             pass
 
